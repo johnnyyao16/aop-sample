@@ -1,0 +1,14 @@
+- !!com.maycur.aop.bean.AopBeanDefinition
+  beanName: beforeMethod
+  className: com.maycur.aop.test.StartTimeBeforeMethod
+- !!com.maycur.aop.bean.AopBeanDefinition
+  beanName: afterMethod
+  className: com.maycur.aop.test.EndTimeAfterMethod
+- !!com.maycur.aop.bean.AopBeanDefinition
+  beanName: testService
+  className: com.maycur.aop.test.TestService
+- !!com.maycur.aop.bean.AopBeanDefinition
+  beanName: testServiceProxy
+  className: com.maycur.aop.bean.ProxyFactoryBean
+  target: testService
+  interceptorNames: [beforeMethod, afterMethod]

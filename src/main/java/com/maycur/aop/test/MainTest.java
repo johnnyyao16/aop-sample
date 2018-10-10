@@ -6,7 +6,8 @@ public class MainTest {
     public static void main(String[] args) throws Exception {
         ApplicationContext applicationContext = new ApplicationContext("applicationBean.yaml");
         applicationContext.init();
-        TestService testService = (TestService) applicationContext.getBean("testServiceProxy");
+        Object bean = applicationContext.getBean("testServiceProxy");
+        TestService testService = (TestService) bean;
         testService.testMethod();
     }
 }

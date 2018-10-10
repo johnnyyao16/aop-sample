@@ -22,7 +22,7 @@ public class ApplicationContext extends AopBeanFactory {
     }
 
     private void loadFile() {
-        InputStream is = getClass().getClassLoader().getResourceAsStream(fileName);
+        InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(fileName);
         List<AopBeanDefinition> beanDefinitions = YamlUtil.loadYaml(is);
         //setBeanDefineMap((List<BeanDefinition>)beanDefinitions);
         if (beanDefinitions != null && !beanDefinitions.isEmpty()) {

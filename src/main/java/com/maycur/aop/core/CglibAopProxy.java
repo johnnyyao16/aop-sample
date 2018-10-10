@@ -27,7 +27,8 @@ public class CglibAopProxy implements AopProxy {
     @Override
     public Object getProxy(ClassLoader classLoader) {
         Class<?> rootClass = advised.getTargetSource().getTargetClass();
-        if (classLoader == null) {
+
+        if(classLoader == null){
             classLoader = ClassUtil.getDefaultClassLoader();
         }
         Enhancer enhancer = new Enhancer();
@@ -36,9 +37,10 @@ public class CglibAopProxy implements AopProxy {
         Callback callbacks = getCallBack(advised);
         enhancer.setCallback(callbacks);
         enhancer.setClassLoader(classLoader);
-        if (constructorArgs != null && constructorArgs.length > 0) {
-            return enhancer.create(constructorArgTypes, constructorArgs);
+        if(constructorArgs != null && constructorArgs.length > 0){
+            return enhancer.create(constructorArgTypes,constructorArgs);
         }
+
         return enhancer.create();
     }
 

@@ -9,7 +9,7 @@ public class ClassUtil {
 
     public static Class loadClass(String className) {
         try {
-            return Thread.currentThread().getContextClassLoader().loadClass(className);
+            return getDefaultClassLoader().loadClass(className);
         } catch (ClassNotFoundException e) {
             logger.error("Class not found {}", e);
         }

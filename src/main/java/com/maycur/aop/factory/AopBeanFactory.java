@@ -27,12 +27,9 @@ public class AopBeanFactory extends BeanFactory {
             AdvisedSupport advisedSupport = getAdvisedSupport(aopBeanDefinition);
             aopBean = new CglibAopProxy(advisedSupport).getProxy();
             aopBeanMap.put(name, aopBean);
-
-        } else {
-            aopBean = super.getBean(name);
-
+            return aopBean;
         }
-        return aopBean;
+        return super.getBean(name);
     }
 
     protected void registerBean(String name, AopBeanDefinition aopBeanDefinition) {

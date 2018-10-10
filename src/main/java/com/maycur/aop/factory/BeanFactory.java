@@ -3,6 +3,7 @@ package com.maycur.aop.factory;
 import com.google.common.collect.Maps;
 import com.maycur.aop.bean.BeanDefinition;
 import com.maycur.aop.util.BeanUtil;
+import com.maycur.aop.util.CglibBeanUtil;
 import com.maycur.aop.util.ClassUtil;
 
 import java.lang.reflect.Field;
@@ -38,7 +39,8 @@ public class BeanFactory {
         if (clz == null) {
             throw new Exception("Can not find bean class by bean name");
         }
-        return BeanUtil.constructBean(clz, null);
+        return CglibBeanUtil.instanceByCglib(clz, null, null);
+        //return BeanUtil.constructBean(clz, null);
     }
 
     private void populateBean(Object bean) throws Exception {
